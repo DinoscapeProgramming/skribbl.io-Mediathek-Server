@@ -74,7 +74,7 @@
         class="image"
         src="<%= image %>"
         style="<%= 'width: 22.5vw; margin-top: 12.5px; margin-left: ' + ((!(index % 4)) * 2.5) + 'vw; margin-right: 12.5px; border-radius: 10px; cursor: pointer;' %>"
-        onclick="<%= 'document.getElementById(\'displayImage\').src = ' + image + '; document.getElementById(\'modal\').style.display = \'block\'; ' %>"
+        onclick="<%= 'document.getElementById(\'displayImage\').src = `' + image + '`; document.getElementById(\'modal\').style.display = \'block\'; ' %>"
       >
     <%
   }); %>
