@@ -21,12 +21,12 @@ app.all("/", (req, res) => {
 });
 
 app.post("/api/v1/addImage", (req, res) => {
-  fs.writeFileSync("./db.json", JSON.stringify({
+  fs.writeFileSync("./db.json", JSON.stringify([
     ...JSON.parse(fs.readFileSync("./db.json", "utf8") || "[]") || [],
     ...[
       req.body.image
     ]
-  }), "utf8");
+  ]), "utf8");
 });
 
 app.get("/api/v1/getImages", (req, res) => {
