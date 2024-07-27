@@ -10,6 +10,56 @@
     .image:hover {
       opacity: 0.95;
     }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modalContent {
+      position: relative;
+      background-color: #fefefe;
+      margin: auto;
+      padding: 0;
+      border: 1px solid #888;
+      width: 80%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      -webkit-animation-name: animatetop;
+      -webkit-animation-duration: 0.4s;
+      animation-name: animatetop;
+      animation-duration: 0.4s
+    }
+
+    @-webkit-keyframes animatetop {
+      from {
+        top: -300px;
+        opacity: 0
+      } 
+      to {
+        top: 0;
+        opacity: 1
+      }
+    }
+
+    @keyframes animatetop {
+      from {
+        top: -300px;
+        opacity: 0
+      }
+      to {
+        top: 0;
+        opacity: 1
+      }
+    }
   </style>
 </head>
 <body style="margin-top: 17.5px; background-image: url(/public/background.png); background-repeat: repeat; background-size: 350px;">
@@ -18,9 +68,15 @@
       <img
         class="image"
         src="<%= image %>"
-        style="<%= 'width: 22.5vw; margin-top: 12.5px; margin-left: ' + ((!(index % 4)) * 2.5) + 'vw; margin-right: 12.5px; border-radius: 10px;' %>"
+        style="<%= 'width: 22.5vw; margin-top: 12.5px; margin-left: ' + ((!(index % 4)) * 2.5) + 'vw; margin-right: 12.5px; border-radius: 10px; cursor: pointer;' %>"
+        onclick="document.getElementById('displayImage').src = image; document.getElementById('modal').style.display = 'block';"
       >
     <%
   }); %>
+  <div id="modal" class="modal">
+    <div class="modalContent">
+      <img id="displayImage">
+    </div>
+  </div>
 </body>
 </html>
