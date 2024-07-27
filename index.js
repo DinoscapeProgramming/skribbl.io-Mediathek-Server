@@ -24,7 +24,7 @@ app.post("/api/v1/addImage", (req, res) => {
   fs.writeFileSync("./db.json", JSON.stringify({
     ...JSON.parse(fs.readFileSync("./db.json", "utf8") || "[]") || [],
     ...[
-      req.body
+      req.body.image
     ]
   }), "utf8");
 });
