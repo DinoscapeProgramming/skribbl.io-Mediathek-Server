@@ -29,6 +29,10 @@ app.post("/api/v1/addImage", (req, res) => {
   }), "utf8");
 });
 
+app.get("/api/v1/getImages", (req, res) => {
+  res.json(JSON.parse(fs.readFileSync("./db.json", "utf8") || "[]") || []);
+});
+
 const listen = app.listen(3000, () => {
   console.log("Server is now ready on port", listen.address().port);
 });
